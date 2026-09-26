@@ -1,0 +1,216 @@
+
+:root{
+  --navy:#12365e;--bleu:#006997;--canard:#1ca6a9;--jaune:#ffd800;--orange:#f1861b;--rouge:#be163a;
+  --ciel:#eef6fb;--texte:#12365e;--doux:#4a6684;--trait:#dbe8f2;
+  --ease:cubic-bezier(.22,1,.36,1);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:"Atkinson Hyperlegible",Verdana,"Segoe UI",Arial,sans-serif;font-size:1.125rem;line-height:1.55;color:var(--texte);background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 1.5rem}
+
+/* Barre de progression de lecture, aux couleurs du logo */
+.progression{position:fixed;top:0;left:0;height:4px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--bleu),var(--canard),var(--jaune),var(--orange),var(--rouge))}
+
+/* En-tête qui se resserre au défilement */
+.entete{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow .3s ease}
+.entete .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-top:.9rem;padding-bottom:.9rem;transition:padding .3s var(--ease)}
+.entete img{mix-blend-mode:multiply;transition:width .3s var(--ease)}
+.entete .logo-usp{width:176px}
+.entete .logo-ghsif{width:156px}
+.entete.reduit{box-shadow:0 1px 0 var(--trait)}
+.entete.reduit .wrap{padding-top:.45rem;padding-bottom:.45rem}
+.entete.reduit .logo-usp{width:128px}
+.entete.reduit .logo-ghsif{width:118px}
+
+/* Accueil */
+.intro{padding:4.5rem 0 5rem}
+.intro .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:center}
+.intro h1{font-size:clamp(2.3rem,5.2vw,3.9rem);line-height:1.05;margin:0 0 .6rem;letter-spacing:-.015em;animation:titre 1s var(--ease) both}
+.intro .etab{font-size:1.2rem;color:var(--bleu);font-weight:700;margin:0 0 2rem;animation:monte .8s var(--ease) .25s both}
+.intro .missions{font-size:1.35rem;margin:0 0 1rem;max-width:32ch;animation:monte .8s var(--ease) .4s both}
+.intro .promesse{display:inline-block;background:var(--ciel);padding:.6rem 1.1rem;border-radius:24px 24px 24px 4px;font-weight:700;margin:0;animation:monte .8s var(--ease) .55s both}
+@keyframes titre{from{clip-path:inset(0 0 100% 0);transform:translateY(14px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes monte{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* L'éventail qui s'ouvre au chargement, puis respire */
+.eventail{width:100%;max-width:400px;justify-self:end;overflow:visible}
+.eventail .p{transform-box:view-box;transform-origin:172px 290px;opacity:0}
+.eventail.ouvert .p{animation:ouvre .9s var(--ease) both}
+.eventail.ouvert .p1{animation-delay:.15s}.eventail.ouvert .p2{animation-delay:.27s}.eventail.ouvert .p3{animation-delay:.39s}.eventail.ouvert .p4{animation-delay:.51s}.eventail.ouvert .p5{animation-delay:.63s}
+@keyframes ouvre{from{opacity:0;transform:rotate(-70deg) scale(.4)}to{opacity:1;transform:none}}
+.eventail .tout{transform-box:view-box;transform-origin:172px 290px}
+.eventail.ouvert .tout{animation:respire 7s ease-in-out 1.8s infinite}
+@keyframes respire{0%,100%{transform:rotate(0)}50%{transform:rotate(2.5deg)}}
+
+/* Portes d'entrée */
+.portes{padding:1rem 0 5rem}
+.portes h2{font-size:1.9rem;margin:0 0 2rem;text-align:center}
+.grille{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.porte{--c:var(--bleu);position:relative;display:flex;flex-direction:column;text-decoration:none;
+  padding:1.6rem 1.4rem 1.5rem;border-radius:44px 44px 44px 8px;background:var(--ciel);
+  transition:transform .35s var(--ease),background-color .35s ease,box-shadow .35s ease}
+.porte .petale{width:66px;height:66px;background:var(--c);border-radius:50% 50% 50% 10%;display:grid;place-items:center;color:#fff;margin-bottom:1.1rem;
+  transition:transform .45s var(--ease),border-radius .45s var(--ease)}
+.porte .petale svg{width:34px;height:34px}
+.porte h3{margin:0 0 .45rem;font-size:1.22rem;line-height:1.25}
+.porte .detail{margin:0 0 1.2rem;color:var(--doux);font-size:1rem;flex:1}
+.porte .aller{display:inline;font-weight:700;color:var(--c);font-size:1rem}
+.porte .aller svg{width:18px;height:18px;vertical-align:-3px;margin-left:.3rem;transition:transform .35s var(--ease)}
+.porte:hover,.porte:focus-visible{transform:translateY(-6px);background:#fff;box-shadow:0 18px 40px -18px color-mix(in srgb,var(--c) 55%,transparent),0 0 0 2px var(--c) inset}
+.porte:hover .petale,.porte:focus-visible .petale{transform:rotate(-12deg) scale(1.06);border-radius:50% 50% 10% 50%}
+.porte:hover .aller svg,.porte:focus-visible .aller svg{transform:translateX(5px)}
+.porte.depistage{--c:var(--rouge)}.porte.vaccination{--c:#138a8d}.porte.tuberculose{--c:var(--bleu)}.porte.acces{--c:#c4650a}
+
+/* Apparition au défilement */
+.apparait{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.apparait.vu{opacity:1;transform:none}
+
+/* Qui sommes-nous / Nous trouver */
+.infos{padding:4.5rem 0;background:linear-gradient(180deg,#fff,var(--ciel) 30%)}
+.infos .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start}
+.infos h2{font-size:1.5rem;margin:0 0 .8rem}
+.infos p{margin:0 0 .75rem;max-width:58ch}
+.contact{background:#fff;border-radius:36px 36px 36px 8px;padding:1.7rem 1.8rem;box-shadow:0 20px 45px -30px rgba(18,54,94,.45)}
+.contact p{margin:0 0 .35rem}
+.contact .tel{font-size:1.4rem;font-weight:700}
+.contact .tel a{text-decoration:none}
+.bouton{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:.8rem 1.3rem;border-radius:24px 24px 24px 4px;
+  animation:pulse 2.6s ease-in-out infinite;transition:background-color .25s ease,transform .25s var(--ease)}
+.bouton:hover{background:var(--bleu);transform:translateY(-2px)}
+@keyframes pulse{0%,100%{box-shadow:0 4px 14px rgba(18,54,94,.3),0 0 0 0 rgba(0,105,151,.35)}50%{box-shadow:0 4px 18px rgba(18,54,94,.35),0 0 0 9px rgba(0,105,151,0)}}
+
+/* Pied de page */
+.pied{padding:2.5rem 0 2.75rem;background:var(--ciel)}
+.pied .logos{display:flex;flex-wrap:wrap;align-items:center;gap:2rem 2.75rem}
+.pied .logos img{height:56px;width:auto;mix-blend-mode:multiply;filter:grayscale(1);opacity:.75;transition:filter .3s ease,opacity .3s ease}
+.pied .logos img:hover{filter:none;opacity:1}
+.pied .mention{margin:1.5rem 0 0;font-size:.95rem;color:var(--doux)}
+
+@media (max-width:1000px){.grille{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:820px){
+  .intro{padding:2.5rem 0 3rem}
+  .intro .wrap,.infos .wrap{grid-template-columns:1fr}
+  .eventail{max-width:150px;justify-self:start;order:-1;margin-bottom:-.5rem}
+  .entete .logo-usp{width:140px}.entete .logo-ghsif{width:124px}
+}
+@media (max-width:560px){.grille{grid-template-columns:1fr}.portes h2{text-align:left}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .apparait,.eventail .p{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ===================== PAGES INTÉRIEURES ===================== */
+body{--c:var(--bleu)}
+body.page-depistage{--c:var(--rouge)}
+body.page-vaccination{--c:#138a8d}
+body.page-tuberculose{--c:var(--bleu)}
+body.page-acces{--c:#c4650a}
+body.page-pratique{--c:var(--navy)}
+
+.fil{padding:1.4rem 0 0;font-size:.98rem}
+.fil a{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;color:var(--doux);font-weight:700}
+.fil a svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.fil a:hover{color:var(--c)}
+.fil a:hover svg{transform:translateX(-4px)}
+
+.tete-page{padding:1.6rem 0 2.6rem}
+.tete-page .wrap{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.tete-page h1{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.06;margin:0 0 .7rem;letter-spacing:-.015em;animation:titre 1s var(--ease) both}
+.tete-page .chapo{font-size:1.25rem;color:var(--doux);margin:0;animation:monte .8s var(--ease) .3s both}
+.tete-page .eventail{width:210px;max-width:210px}
+.eventail .p.pale{fill:#dbe8f2}
+
+/* Sous-navigation qui suit la lecture */
+.sousnav{position:sticky;top:var(--h-entete,64px);z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--trait)}
+.sousnav ul{list-style:none;margin:0;padding:.6rem 0;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+.sousnav ul::-webkit-scrollbar{display:none}
+.sousnav a{display:block;white-space:nowrap;text-decoration:none;font-weight:700;font-size:.98rem;padding:.45rem .95rem;border-radius:18px 18px 18px 4px;color:var(--doux);transition:background-color .3s ease,color .3s ease}
+.sousnav a:hover{color:var(--c)}
+.sousnav a.actif{background:var(--c);color:#fff}
+
+/* Blocs de contenu */
+.bloc{padding:3.2rem 0 1rem;scroll-margin-top:calc(var(--h-entete,64px) + 60px)}
+.bloc .wrap{max-width:860px}
+.bloc h2{display:flex;align-items:flex-start;gap:.8rem;font-size:1.7rem;line-height:1.2;margin:0 0 1.3rem}
+.bloc h2::before{content:"";flex:none;width:30px;height:30px;margin-top:.12em;background:var(--c);border-radius:50% 50% 50% 12%}
+.bloc .intro-bloc{font-size:1.15rem;margin:0 0 1.2rem;max-width:62ch}
+
+/* Questions dépliables */
+.acc{border-radius:26px 26px 26px 6px;background:var(--ciel);margin:0 0 .7rem;transition:background-color .3s ease,box-shadow .3s ease}
+.acc.ouverte{background:#fff;box-shadow:0 0 0 2px var(--c) inset,0 16px 36px -24px color-mix(in srgb,var(--c) 60%,transparent)}
+.acc h3{margin:0;font-size:1.12rem}
+.acc button{all:unset;box-sizing:border-box;display:flex;width:100%;align-items:center;justify-content:space-between;gap:1rem;padding:1.05rem 1.35rem;cursor:pointer;font-weight:700;line-height:1.35;border-radius:26px 26px 26px 6px}
+.acc button:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.acc .signe{flex:none;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--c);display:grid;place-items:center;transition:transform .45s var(--ease),background-color .3s ease,color .3s ease}
+.acc .signe svg{width:16px;height:16px}
+.acc.ouverte .signe{transform:rotate(45deg);background:var(--c);color:#fff}
+.acc .corps{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.acc.ouverte .corps{grid-template-rows:1fr}
+.acc .corps > div{overflow:hidden}
+.acc .corps p,.acc .corps ul{margin:0 1.35rem .9rem;max-width:62ch}
+.acc .corps > div > :first-child{margin-top:0}
+.acc .corps > div > :last-child{margin-bottom:1.25rem}
+.acc .corps ul{padding-left:1.2rem}
+.acc .corps li{margin:.2rem 0}
+
+/* Renvoi vers la page pratique */
+.suite{padding:3.5rem 0 4.5rem}
+.suite .carte{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;background:var(--ciel);border-radius:40px 40px 40px 8px;padding:1.8rem 2rem}
+.suite p{margin:0;font-size:1.15rem;font-weight:700;max-width:40ch}
+.suite .bouton{margin-top:0}
+
+@media (max-width:820px){
+  .tete-page .wrap{grid-template-columns:1fr}
+  .tete-page .eventail{width:120px;max-width:120px;order:-1;justify-self:start}
+  .bloc{padding-top:2.4rem}
+  .bloc h2{font-size:1.42rem}
+  .bloc h2::before{width:24px;height:24px;margin-top:.1em}
+}
+
+/* Encart de texte simple */
+.encart{background:#fff;box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 28%,white) inset;border-radius:30px 30px 30px 6px;padding:1.35rem 1.5rem;margin:0 0 .8rem}
+.encart p{margin:0 0 .75rem;max-width:62ch}
+.encart p:last-child{margin-bottom:0}
+.encart .bouton{margin-top:.4rem;background:var(--c);animation:none}
+.encart .bouton:hover{filter:brightness(1.1)}
+.encart .tel-lien{font-weight:700;white-space:nowrap}
+.sous-titre{font-size:1.15rem;margin:1.6rem 0 .7rem}
+
+/* Étapes numérotées (vraie séquence) */
+.etapes{list-style:none;counter-reset:e;margin:0 1.35rem 1.1rem;padding:0;max-width:62ch}
+.etapes li{counter-increment:e;position:relative;padding-left:2.6rem;margin:0 0 .8rem}
+.etapes li::before{content:counter(e);position:absolute;left:0;top:-.05rem;width:1.9rem;height:1.9rem;border-radius:50% 50% 50% 14%;background:var(--c);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.95rem}
+.encart .lignes p{margin:0 0 .3rem}
+
+/* Page pratique, cartes des lieux */
+.lieux{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:1000px;margin:0 auto}
+.lieu{position:relative;background:var(--ciel);border-radius:40px 40px 40px 8px;padding:1.6rem 1.7rem 1.5rem;transition:transform .35s var(--ease),box-shadow .35s ease,background-color .35s ease}
+.lieu:hover{transform:translateY(-4px);background:#fff;box-shadow:0 0 0 2px var(--navy) inset,0 18px 40px -24px rgba(18,54,94,.5)}
+.lieu h2{display:flex;align-items:flex-start;gap:.7rem;font-size:1.3rem;line-height:1.25;margin:0 0 .6rem}
+.lieu h2::before{content:"";flex:none;width:24px;height:24px;margin-top:.1em;border-radius:50% 50% 50% 12%;background:var(--pt,var(--navy))}
+.lieu .adresse{color:var(--doux);margin:0 0 1rem}
+.lieu .adresse p{margin:0}
+.lieu .groupe{margin:0 0 .8rem}
+.lieu .groupe:last-child{margin-bottom:0}
+.lieu .etiquette{display:inline-block;font-weight:700;font-size:.92rem;padding:.2rem .7rem;border-radius:14px 14px 14px 3px;background:#fff;margin:0 0 .35rem}
+.lieu:hover .etiquette{background:var(--ciel)}
+.lieu .groupe p{margin:0}
+.lieu .note{margin:.2rem 0 0;font-weight:700}
+.lieu.large{grid-column:1 / -1}
+.lieux + .lieux{margin-top:1.25rem}
+.zone{padding:0 0 4.5rem}
+@media (max-width:760px){.lieux{grid-template-columns:1fr}.lieu.large{grid-column:auto}}
+
+/* Liens vers les sites des hôpitaux */
+a.lien-hop{color:inherit;text-decoration:underline;text-decoration-color:var(--c);text-decoration-thickness:2px;text-underline-offset:3px;transition:color .2s ease}
+a.lien-hop:hover{color:var(--c)}
+.intro .etab a.lien-hop{text-decoration-color:currentColor}
+a.logo-lien{display:block}
