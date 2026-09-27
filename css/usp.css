@@ -214,3 +214,67 @@ a.lien-hop{color:inherit;text-decoration:underline;text-decoration-color:var(--c
 a.lien-hop:hover{color:var(--c)}
 .intro .etab a.lien-hop{text-decoration-color:currentColor}
 a.logo-lien{display:block}
+
+/* Adresses cliquables et boutons « S'y rendre » */
+a.adresse-lien{color:inherit;text-decoration:none;display:inline}
+a.adresse-lien svg{width:1em;height:1em;vertical-align:-.15em;margin-right:.25rem;color:var(--c)}
+a.adresse-lien span{text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--c);text-underline-offset:3px}
+a.adresse-lien:hover span{text-decoration-style:solid;color:var(--c)}
+a.sy-rendre{display:inline-flex;align-items:center;gap:.3rem;vertical-align:.1em;margin:0 .15rem;padding:.18rem .65rem .2rem .5rem;border-radius:14px 14px 14px 3px;
+  background:color-mix(in srgb,var(--c) 12%,white);color:var(--c);font-size:.85rem;font-weight:700;line-height:1.3;text-decoration:none;white-space:nowrap;
+  transition:background-color .25s ease,color .25s ease,transform .25s var(--ease)}
+a.sy-rendre svg{width:14px;height:14px}
+a.sy-rendre:hover{background:var(--c);color:#fff;transform:translateY(-1px)}
+.lieu .bas-carte{margin:1rem 0 0}
+.lieu .bas-carte a.sy-rendre{font-size:.95rem;padding:.4rem .9rem .42rem .7rem;margin:0;background:#fff;color:var(--pt,var(--navy))}
+.lieu:hover .bas-carte a.sy-rendre{background:var(--ciel)}
+.lieu .bas-carte a.sy-rendre:hover{background:var(--navy);color:#fff}
+.pied .mention a.adresse-lien svg{color:var(--doux)}
+
+/* ===== Sélecteur de langues (même fonctionnement que le site de vaccination au collège) ===== */
+.entete .wrap{flex-wrap:wrap}
+.langButtons{display:flex;flex-direction:column;align-items:center;gap:2px;direction:ltr;margin:0 auto}
+.langHint{font-size:12px;font-weight:700;color:var(--doux);display:flex;align-items:center;gap:4px;transition:opacity .3s ease,height .3s ease}
+.langHint .arrow{display:inline-block;animation:langArrowBounce 1.4s ease-in-out infinite;font-size:13px}
+@keyframes langArrowBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.entete.reduit .langHint{opacity:0;height:0;overflow:hidden}
+.langPanelWrap{position:relative}
+.langSwitcherBtn{background:#fff;border:1px solid var(--trait);border-radius:999px;color:var(--navy);font:inherit;font-weight:700;font-size:15px;cursor:pointer;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(18,54,94,.1);min-width:15.5rem;justify-content:center;
+  transition:box-shadow .25s ease,border-color .25s ease}
+.langSwitcherBtn:hover{border-color:var(--bleu);box-shadow:0 4px 14px rgba(0,105,151,.2)}
+.langSwitcherBtn .chevron{font-size:11px;opacity:.7}
+.langSwitcherFlag,.langSwitcherText{transition:opacity .3s ease;opacity:1}
+.langSwitcherFlag{display:inline-flex;width:20px;height:14px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0}
+.langSwitcherFlag svg,.langOptionFlag svg{display:block;width:100%;height:100%}
+.langOptionFlag{display:inline-flex;width:18px;height:12px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0}
+.langPanel{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;background:#fff;border:1px solid var(--trait);border-radius:14px;box-shadow:0 10px 30px rgba(18,54,94,.2);padding:10px;display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:4px;max-height:65vh;overflow-y:auto;width:max-content;max-width:92vw;z-index:70;animation:popLangue .2s var(--ease)}
+.langPanel[hidden]{display:none}
+@keyframes popLangue{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%)}}
+.langOption{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid transparent;background:none;color:var(--texte);cursor:pointer;font:inherit;font-size:13px;font-weight:700;text-align:left;white-space:nowrap}
+.langOption:hover{background:var(--ciel)}
+.langOption.active{border-color:var(--bleu);background:var(--ciel)}
+main{transition:opacity .22s ease}
+main.langFade{opacity:0}
+
+/* Sens de lecture de droite à gauche */
+.entete,.langButtons{direction:ltr}
+[dir="rtl"] .porte .aller svg,[dir="rtl"] .fil a svg{transform:scaleX(-1)}
+[dir="rtl"] .porte:hover .aller svg{transform:scaleX(-1) translateX(5px)}
+[dir="rtl"] .intro .missions{max-width:none}
+
+@media (max-width:820px){
+  .langButtons{order:3;width:100%;margin-top:.4rem}
+  .langHint{font-size:12.5px}
+  .langSwitcherBtn{min-width:0;width:100%;max-width:22rem}
+}
+
+.langHint .sep{opacity:.5;margin:0 2px}
+
+/* Les numéros de téléphone restent toujours de gauche à droite */
+a[href^="tel:"],.numeros{direction:ltr;unicode-bidi:isolate}
+.numeros{display:inline-block}
+a.adresse-lien,a[href^="mailto:"],a.lien-hop{unicode-bidi:isolate}
+a.adresse-lien,a[href^="mailto:"],a.lien-hop{direction:ltr}
+a[href^="tel:"],bdi[dir="ltr"]{white-space:nowrap}
+[dir="rtl"] .etapes li{padding-left:0;padding-right:2.6rem}
+[dir="rtl"] .etapes li::before{left:auto;right:0}

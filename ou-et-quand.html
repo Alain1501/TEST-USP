@@ -24,13 +24,13 @@
     </header>
 
     <main>
-      <div class="fil"><div class="wrap"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Accueil</a></div></div>
+      <div class="fil"><div class="wrap"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> <span data-i18n-ui="accueil">Accueil</span></a></div></div>
 
       <section class="tete-page">
         <div class="wrap">
           <div>
-            <h1>Où et quand nous trouver</h1>
-            <p class="chapo">Dépistage, santé sexuelle et vaccination sont proposés sur les quatre sites.</p>
+            <h1 data-i18n="h1">Où et quand nous trouver</h1>
+            <p class="chapo" data-i18n="chapo">Dépistage, santé sexuelle et vaccination sont proposés sur les quatre sites.</p>
           </div>
           <svg class="eventail" viewBox="0 0 420 350" aria-hidden="true">
             <g class="tout">
@@ -51,42 +51,48 @@
     <div class="lieux">
       <article class="lieu apparait" style="--pt:#be163a">
         <h2>Melun, Unité de Santé Publique</h2>
-        <div class="adresse"><p>8 rue de Vaux, 77000 Melun</p><p>Sous l'ancienne maternité, site de l'ancien hôpital Marc Jacquet</p></div>
-        <div class="groupe"><span class="etiquette">Sur rendez-vous</span><p>Lundi de 10h30 à 14h</p><p>Mardi de 16h30 à 20h (uniquement dépistage)</p><p>Mercredi de 9h à 12h30</p></div>
-        <div class="groupe"><span class="etiquette">Sans rendez-vous</span><p>Vendredi de 9h à 12h30</p></div>
-        <p class="note">La PrEP se fait uniquement sur rendez-vous.</p>
+        <div class="adresse"><p><a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>8 rue de Vaux, 77000 Melun</span></a></p><p data-i18n="m-sous">Sous l'ancienne maternité, site de l'ancien hôpital Marc Jacquet</p></div>
+        <div class="groupe"><span class="etiquette" data-i18n="rdv">Sur rendez-vous</span><p data-i18n="h-lun">Lundi de 10h30 à 14h</p><p data-i18n="h-mar">Mardi de 16h30 à 20h (uniquement dépistage)</p><p data-i18n="h-mer">Mercredi de 9h à 12h30</p></div>
+        <div class="groupe"><span class="etiquette" data-i18n="srdv">Sans rendez-vous</span><p data-i18n="h-ven">Vendredi de 9h à 12h30</p></div>
+        <p class="note" data-i18n="note-prep">La PrEP se fait uniquement sur rendez-vous.</p>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
       <article class="lieu apparait" style="--pt:#1ca6a9">
         <h2>Nemours, <a class="lien-hop" href="https://www.ch-sud-seine-et-marne.fr/" target="_blank" rel="noopener">Centre Hospitalier du Sud Seine-et-Marne, site de Nemours</a></h2>
-        <div class="adresse"><p>Consultations externes, rez-de-chaussée</p></div>
-        <div class="groupe"><span class="etiquette">Sans rendez-vous</span><p>1er et 3e lundi du mois, de 16h à 18h</p></div>
+        <div class="adresse"><p data-i18n="n-ext">Consultations externes, rez-de-chaussée</p></div>
+        <div class="groupe"><span class="etiquette" data-i18n="srdv">Sans rendez-vous</span><p data-i18n="h-nem">1er et 3e lundi du mois, de 16h à 18h</p></div>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Centre%20Hospitalier%20du%20Sud%20Seine-et-Marne%2C%20site%20de%20Nemours%2C%2077140%20Nemours" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
       <article class="lieu apparait" style="--pt:#ffd800">
         <h2>Savigny-le-Temple, Centre Françoise Dolto</h2>
-        <div class="adresse"><p>Chemin du Plessis, 77176 Savigny-le-Temple</p></div>
-        <div class="groupe"><span class="etiquette">Sans rendez-vous</span><p>Tous les mercredis, de 15h30 à 19h</p></div>
+        <div class="adresse"><p><a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Centre%20Fran%C3%A7oise%20Dolto%2C%20Chemin%20du%20Plessis%2C%2077176%20Savigny-le-Temple" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Chemin du Plessis, 77176 Savigny-le-Temple</span></a></p></div>
+        <div class="groupe"><span class="etiquette" data-i18n="srdv">Sans rendez-vous</span><p data-i18n="h-sav">Tous les mercredis, de 15h30 à 19h</p></div>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Centre%20Fran%C3%A7oise%20Dolto%2C%20Chemin%20du%20Plessis%2C%2077176%20Savigny-le-Temple" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
       <article class="lieu apparait" style="--pt:#f1861b">
         <h2>Montereau, <a class="lien-hop" href="https://www.ch-sud-seine-et-marne.fr/" target="_blank" rel="noopener">Centre Hospitalier du Sud Seine-et-Marne, site de Montereau</a></h2>
-        <div class="adresse"><p>1 rue Victor Hugo, Pavillon B1 Chirurgie, rez-de-chaussée, 77130 Montereau</p></div>
-        <div class="groupe"><span class="etiquette">Sans rendez-vous</span><p>Tous les jeudis, de 15h30 à 18h30</p></div>
+        <div class="adresse"><p><a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Centre%20Hospitalier%20du%20Sud%20Seine-et-Marne%2C%201%20rue%20Victor%20Hugo%2C%2077130%20Montereau-Fault-Yonne" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>1 rue Victor Hugo, Pavillon B1 Chirurgie, rez-de-chaussée, 77130 Montereau</span></a></p></div>
+        <div class="groupe"><span class="etiquette" data-i18n="srdv">Sans rendez-vous</span><p data-i18n="h-mon">Tous les jeudis, de 15h30 à 18h30</p></div>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Centre%20Hospitalier%20du%20Sud%20Seine-et-Marne%2C%201%20rue%20Victor%20Hugo%2C%2077130%20Montereau-Fault-Yonne" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
     </div>
     <div class="lieux">
       <article class="lieu apparait" style="--pt:#006997">
-        <h2>Tuberculose, CLAT Sud 77</h2>
-        <div class="adresse"><p>Unité de Santé Publique, 8 rue de Vaux, 77000 Melun</p></div>
-        <div class="groupe"><p>Du lundi au vendredi, de 9h à 17h</p><p>Téléphone <a class="tel-lien" href="tel:+33181741964">01 81 74 19 64</a></p><p>Mail <a href="mailto:infirmiere-clat@ghsif.fr">infirmiere-clat@ghsif.fr</a></p></div>
+        <h2><span data-i18n="t-clat">Tuberculose, CLAT Sud 77</span></h2>
+        <div class="adresse"><p>Unité de Santé Publique, <a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>8 rue de Vaux, 77000 Melun</span></a></p></div>
+        <div class="groupe"><p data-i18n="h-clat">Du lundi au vendredi, de 9h à 17h</p><p><span data-i18n="lbl-tel">Téléphone</span> <a class="tel-lien" href="tel:+33181741964">01 81 74 19 64</a></p><p><span data-i18n="lbl-mail">Mail</span> <a href="mailto:infirmiere-clat@ghsif.fr">infirmiere-clat@ghsif.fr</a></p></div>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
       <article class="lieu apparait" style="--pt:#c4650a">
-        <h2>PASS, accès aux soins</h2>
-        <div class="adresse"><p><a class="lien-hop" href="https://www.ghsif.fr/" target="_blank" rel="noopener">Hôpital de Melun</a>, 270 avenue Marc Jacquet, 77000 Melun</p><p>Service social au rez-de-chaussée, face au laboratoire</p></div>
-        <div class="groupe"><p>Service social du lundi au vendredi, de 9h à 16h40</p><p>Consultations médicales sur rendez-vous le mardi et le vendredi, de 9h à 16h</p><p>Téléphone <a class="tel-lien" href="tel:+33181742162">01 81 74 21 62</a></p><p>Mail <a href="mailto:service.social@ghsif.fr">service.social@ghsif.fr</a></p><p>Depuis la gare de Melun, bus 3602 ou 3603, arrêt Santé Pôle</p></div>
+        <h2><span data-i18n="t-pass">PASS, accès aux soins</span></h2>
+        <div class="adresse"><p><a class="lien-hop" href="https://www.ghsif.fr/" target="_blank" rel="noopener">Hôpital de Melun</a>, <a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Groupe%20Hospitalier%20Sud%20%C3%8Ele-de-France%2C%20270%20avenue%20Marc%20Jacquet%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>270 avenue Marc Jacquet, 77000 Melun</span></a></p><p data-i18n="p-sous">Service social au rez-de-chaussée, face au laboratoire</p></div>
+        <div class="groupe"><p data-i18n="h-pass1">Service social du lundi au vendredi, de 9h à 16h40</p><p data-i18n="h-pass2">Consultations médicales sur rendez-vous le mardi et le vendredi, de 9h à 16h</p><p><span data-i18n="lbl-tel">Téléphone</span> <a class="tel-lien" href="tel:+33181742162">01 81 74 21 62</a></p><p><span data-i18n="lbl-mail">Mail</span> <a href="mailto:service.social@ghsif.fr">service.social@ghsif.fr</a></p><p data-i18n="bus">Depuis la gare de Melun, bus 3602 ou 3603, arrêt Santé Pôle</p></div>
+              <p class="bas-carte"><a class="sy-rendre" href="https://www.google.com/maps/dir/?api=1&destination=Groupe%20Hospitalier%20Sud%20%C3%8Ele-de-France%2C%20270%20avenue%20Marc%20Jacquet%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n-ui="syRendre">S'y rendre</span></a></p>
       </article>
       <article class="lieu apparait large" style="--pt:#12365e">
-        <h2>Pour tout renseignement</h2>
-        <div class="adresse"><p>Secrétariat de l'Unité de Santé Publique</p></div>
-        <div class="groupe"><p>Téléphone <a class="tel-lien" href="tel:+33181742850">01 81 74 28 50</a> / <a class="tel-lien" href="tel:+33181742853">28 53</a></p><p>Mail <a href="mailto:secretariat.usp@ghsif.fr">secretariat.usp@ghsif.fr</a></p></div>
+        <h2><span data-i18n="t-rens">Pour tout renseignement</span></h2>
+        <div class="adresse"><p data-i18n="secr">Secrétariat de l'Unité de Santé Publique</p></div>
+        <div class="groupe"><p><span data-i18n="lbl-tel">Téléphone</span> <a class="tel-lien" href="tel:+33181742850">01 81 74 28 50</a> / <a class="tel-lien" href="tel:+33181742853">28 53</a></p><p><span data-i18n="lbl-mail">Mail</span> <a href="mailto:secretariat.usp@ghsif.fr">secretariat.usp@ghsif.fr</a></p></div>
       </article>
     </div>
     </div>
@@ -100,11 +106,11 @@
           <img src="img/ars.png" alt="Agence Régionale de Santé Île-de-France">
           <img src="img/assurance-maladie.png" alt="L'Assurance Maladie">
         </div>
-        <p class="mention">Unité de Santé Publique Sud 77, 8 rue de Vaux, 77000 Melun</p>
+        <p class="mention">Unité de Santé Publique Sud 77, <a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>8 rue de Vaux, 77000 Melun</span></a></p>
       </div>
     </footer>
 
-    <script src="js/usp.js"></script>
+    <script src="js/i18n/ou-et-quand.js"></script><script src="js/langues.js"></script><script src="js/usp.js"></script>
     </body>
     </html>
     

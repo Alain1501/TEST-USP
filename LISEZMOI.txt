@@ -11,7 +11,15 @@ acces-aux-soins.html            Accès aux soins
 ou-et-quand.html                Où et quand nous trouver
 css/usp.css                     Présentation commune à toutes les pages
 js/usp.js                       Animations communes à toutes les pages
+js/langues.js                   Sélecteur des 17 langues
+js/i18n/                        Traductions, un fichier par page
 img/                            Logos
+
+Langues
+
+Le site est rédigé en français. Les traductions des 16 autres langues sont dans le dossier js/i18n.
+Le choix de langue est mémorisé d'une page à l'autre. On peut aussi ouvrir directement une langue
+en ajoutant ?lang= à l'adresse, par exemple index.html?lang=ar
 
 Mise en ligne
 
@@ -20,5 +28,3 @@ Il suffit de déposer le contenu de ce dossier tel quel, en gardant les sous-dos
 
 Sur GitHub Pages, déposer ces fichiers à la racine d'un dépôt, puis activer Pages dans les réglages du dépôt.
 Pour la DSI, transmettre ce dossier complet.
-
-Modifier une présentation dans css/usp.css la change sur toutes les pages en même temps.
