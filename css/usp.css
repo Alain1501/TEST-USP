@@ -278,3 +278,17 @@ a.adresse-lien,a[href^="mailto:"],a.lien-hop{direction:ltr}
 a[href^="tel:"],bdi[dir="ltr"]{white-space:nowrap}
 [dir="rtl"] .etapes li{padding-left:0;padding-right:2.6rem}
 [dir="rtl"] .etapes li::before{left:auto;right:0}
+
+/* Plan d'accès */
+.plan{margin:1rem 0 .2rem;background:#fff;border-radius:22px 22px 22px 4px;padding:.8rem;box-shadow:0 0 0 1px var(--trait) inset}
+.plan img{width:100%;max-width:420px;margin:0 auto;border-radius:12px}
+.plan figcaption{font-size:.92rem;color:var(--doux);text-align:center;margin-top:.5rem}
+.lieu .plan{margin-top:1rem}
+
+/* Documents et liens utiles */
+.ressources{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.ressources a{display:flex;align-items:center;gap:.8rem;text-decoration:none;padding:.8rem 1rem;border-radius:18px 18px 18px 4px;background:var(--ciel);font-weight:700;transition:background-color .25s ease,transform .25s var(--ease)}
+.ressources a:hover{background:color-mix(in srgb,var(--c) 14%,white);transform:translateX(3px)}
+[dir="rtl"] .ressources a:hover{transform:translateX(-3px)}
+.ressources .ico{flex:none;width:36px;height:36px;border-radius:50% 50% 50% 14%;background:var(--c);color:#fff;display:grid;place-items:center}
+.ressources .ico svg{width:18px;height:18px}
