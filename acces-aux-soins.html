@@ -99,7 +99,7 @@
           <p>Consultations médicales sur rendez-vous le mardi et le vendredi, de 9h à 16h</p>
           <p>Depuis la gare de Melun, bus 3602 ou 3603, arrêt Santé Pôle</p>
           </div>
-      </div><figure class="plan"><img src="img/plan-pass.png" alt="Plan d'accès au service social PASS de l'hôpital de Melun" loading="lazy"><figcaption data-i18n="plan-leg">Plan d'accès au service social PASS, au rez-de-chaussée, face au laboratoire</figcaption></figure></div>
+      </div><div class="mini-carte" data-sites="pass" role="region" aria-label="Carte"></div><figure class="plan"><img class="plan-img" src="img/plans/plan-pass-fr.png" alt="Plan d'accès au service social PASS de l'hôpital de Melun" loading="lazy"><figcaption data-i18n="plan-leg">Plan d'accès au service social PASS, au rez-de-chaussée, face au laboratoire</figcaption><div class="plan-outils"><label class="plan-choix"><span data-i18n="planLangue">Langue du plan</span> <select class="plan-langue"><option value="fr" selected>Français</option><option value="en">English</option><option value="pt">Português</option><option value="ro">Română</option><option value="tr">Türkçe</option><option value="ar">العربية</option></select></label></div></figure><p class="plaquette-pass"><a class="bouton plan-pdf" href="pdf/pass/plaquette-pass-fr.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span data-i18n="planPdf">Télécharger la plaquette PASS</span></a></p></div>
     </div>
   </section>
 
@@ -109,7 +109,7 @@
       <div class="encart apparait"><div data-i18n="e2">
           <p>L'équipe de la PASS Mobile se déplace régulièrement dans plusieurs communes de Melun et de ses alentours, à bord d'un camion aménagé, avec un médecin, une assistante sociale et une infirmière. Elle propose sur place des soins, des bilans de santé et des vaccinations.</p>
           <p>Si vous apercevez le camion de l'Unité de Santé Publique, n'hésitez pas à vous approcher pour vous renseigner.</p>
-      </div></div>
+      </div><figure class="photo"><img src="img/camion-usp.jpg" alt="Le camion de l'Unité de Santé Publique Sud 77 en intervention" loading="lazy"></figure></div>
 
     </div>
   </section>
@@ -119,7 +119,7 @@
       <h2 id="t-arrivee" class="apparait" data-i18n="t-arrivee">Je viens d'arriver en France, un bilan de santé</h2>
       <div class="encart apparait"><div data-i18n="e3">
           <p>Si vous êtes arrivé récemment en France, un bilan de santé complet vous est proposé lors d'une consultation médicale à la PASS. Il comprend un examen médical, des dépistages adaptés à votre situation (VIH, hépatites, tuberculose et autres infections selon votre parcours), la mise à jour de vos vaccins, ainsi qu'un temps d'écoute sur votre santé mentale et votre bien-être. Les informations médicales restent confidentielles.</p>
-          <p>Pour prendre rendez-vous, contactez la PASS au <a class="tel-lien" href="tel:+33181742162">01 81 74 21 62</a>.</p>
+          <p>Pour prendre rendez-vous, contactez le secrétariat du service social au <a class="tel-lien" href="tel:+33181742162">01 81 74 21 62</a>.</p>
       </div></div>
 
     </div>
@@ -136,7 +136,7 @@
           <p>Mail <a href="mailto:secretariat.usp@ghsif.fr">secretariat.usp@ghsif.fr</a></p>
           </div>
           <p>Pour la vaccination, un représentant de la structure doit être présent lors de la consultation et agit comme représentant du mineur.</p>
-      </div></div>
+      </div><div class="mini-carte" data-sites="melun" role="region" aria-label="Carte"></div></div>
 
     </div>
   </section>
@@ -164,6 +164,9 @@
     </footer>
 
     <script src="js/i18n/acces-aux-soins.js"></script><script src="js/langues.js"></script><script src="js/usp.js"></script>
+<script src="js/leaflet.js"></script>
+<script src="js/carte.js"></script>
+<script src="js/plan.js"></script>
     </body>
     </html>
     
