@@ -231,28 +231,27 @@ a.sy-rendre:hover{background:var(--c);color:#fff;transform:translateY(-1px)}
 .lieu .bas-carte a.sy-rendre:hover{background:var(--navy);color:#fff}
 .pied .mention a.adresse-lien svg{color:var(--doux)}
 
-/* ===== Sélecteur de langues (même fonctionnement que le site de vaccination au collège) ===== */
+/* ===== Sélecteur de langues (copie conforme du site de vaccination au collège) ===== */
 .entete .wrap{flex-wrap:wrap}
-.langButtons{display:flex;flex-direction:column;align-items:center;gap:2px;direction:ltr;margin:0 auto}
-.langHint{font-size:12px;font-weight:700;color:var(--doux);display:flex;align-items:center;gap:4px;transition:opacity .3s ease,height .3s ease}
-.langHint .arrow{display:inline-block;animation:langArrowBounce 1.4s ease-in-out infinite;font-size:13px}
-@keyframes langArrowBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
-.entete.reduit .langHint{opacity:0;height:0;overflow:hidden}
+.langButtons{display:flex;flex-direction:column;align-items:center;gap:4px;direction:ltr;margin:0 auto}
+.langHint{font-size:16px;font-weight:800;letter-spacing:.01em;line-height:1.25;transition:opacity .3s ease,height .3s ease;background-repeat:no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-image:linear-gradient(90deg,#002395,#ED2939)}
+.entete.reduit .langHint{opacity:0 !important;height:0;overflow:hidden}
 .langPanelWrap{position:relative}
-.langSwitcherBtn{background:#fff;border:1px solid var(--trait);border-radius:999px;color:var(--navy);font:inherit;font-weight:700;font-size:15px;cursor:pointer;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(18,54,94,.1);min-width:15.5rem;justify-content:center;
-  transition:box-shadow .25s ease,border-color .25s ease}
+.langSwitcherBtn{background:#fff;border:1px solid var(--trait);border-radius:999px;color:var(--navy);font:inherit;font-weight:700;font-size:15px;cursor:pointer;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(18,54,94,.08);justify-content:center;
+  transition:box-shadow .25s ease,border-color .25s ease,transform .25s var(--ease)}
 .langSwitcherBtn:hover{border-color:var(--bleu);box-shadow:0 4px 14px rgba(0,105,151,.2)}
-.langSwitcherBtn .chevron{font-size:11px;opacity:.7}
-.langSwitcherFlag,.langSwitcherText{transition:opacity .3s ease;opacity:1}
-.langSwitcherFlag{display:inline-flex;width:20px;height:14px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0}
-.langSwitcherFlag svg,.langOptionFlag svg{display:block;width:100%;height:100%}
-.langOptionFlag{display:inline-flex;width:18px;height:12px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0}
-.langPanel{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;background:#fff;border:1px solid var(--trait);border-radius:14px;box-shadow:0 10px 30px rgba(18,54,94,.2);padding:10px;display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:4px;max-height:65vh;overflow-y:auto;width:max-content;max-width:92vw;z-index:70;animation:popLangue .2s var(--ease)}
+.langChevron{width:11px;height:11px;opacity:.65;flex-shrink:0;transition:transform .25s ease}
+.langSwitcherBtn[aria-expanded="true"] .langChevron{transform:rotate(180deg)}
+.langSwitcherFlag{display:inline-flex;flex-shrink:0}
+.langDrapeau{width:20px;height:14px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);display:block}
+.langOptionFlag{width:18px;height:12px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;display:block}
+.langPanel{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--trait);border-radius:14px;box-shadow:0 20px 50px rgba(18,54,94,.2);padding:10px;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:4px;max-height:70vh;overflow-y:auto;width:max-content;max-width:92vw;z-index:70;animation:popLangue .2s var(--ease)}
 .langPanel[hidden]{display:none}
 @keyframes popLangue{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%)}}
-.langOption{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid transparent;background:none;color:var(--texte);cursor:pointer;font:inherit;font-size:13px;font-weight:700;text-align:left;white-space:nowrap}
+.langOption{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid transparent;background:none;color:var(--texte);cursor:pointer;font:inherit;font-size:13px;font-weight:700;text-align:left;white-space:nowrap;width:100%}
 .langOption:hover{background:var(--ciel)}
 .langOption.active{border-color:var(--bleu);background:var(--ciel)}
+.langCheck{width:14px;flex-shrink:0;color:var(--bleu);font-weight:900;font-size:13px}
 main{transition:opacity .22s ease}
 main.langFade{opacity:0}
 
@@ -264,11 +263,9 @@ main.langFade{opacity:0}
 
 @media (max-width:820px){
   .langButtons{order:3;width:100%;margin-top:.4rem}
-  .langHint{font-size:12.5px}
+  .langHint{font-size:14px}
   .langSwitcherBtn{min-width:0;width:100%;max-width:22rem}
 }
-
-.langHint .sep{opacity:.5;margin:0 2px}
 
 /* Les numéros de téléphone restent toujours de gauche à droite */
 a[href^="tel:"],.numeros{direction:ltr;unicode-bidi:isolate}
@@ -1017,3 +1014,160 @@ body.page-femmes{--c:#c2306a}
 .lieux-accueil + .mini-carte{margin-top:1rem}
 .lieux-accueil + .mini-carte{height:320px}
 .mini-suite{max-width:860px;margin:0 auto 1.2rem;height:320px}
+
+/* ===== Recherche ===== */
+.outils-entete{display:flex;align-items:center;gap:.5rem}
+.btn-recherche{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--trait);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(18,54,94,.1);transition:border-color .25s ease,box-shadow .25s ease,transform .25s var(--ease)}
+.btn-recherche svg{width:20px;height:20px}
+.btn-recherche:hover{border-color:var(--bleu);box-shadow:0 4px 14px rgba(0,105,151,.2);transform:scale(1.05)}
+@media (max-width:820px){.outils-entete{width:100%;justify-content:center}.outils-entete .langPanelWrap{flex:1;max-width:22rem}}
+html.recherche-ouverte{overflow:hidden}
+.recherche-fond{position:fixed;inset:0;z-index:200;background:rgba(18,54,94,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;padding:max(4vh,env(safe-area-inset-top)) 1rem 1rem;animation:rApparait .18s ease}
+.recherche-fond[hidden]{display:none}
+@keyframes rApparait{from{opacity:0}to{opacity:1}}
+.recherche-boite{width:100%;max-width:680px;max-height:88vh;display:flex;flex-direction:column;background:#fff;border-radius:28px 28px 28px 6px;box-shadow:0 30px 80px -20px rgba(18,54,94,.55);overflow:hidden;animation:rMonte .28s var(--ease)}
+@keyframes rMonte{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
+.recherche-ligne{display:flex;align-items:center;gap:.6rem;padding:.9rem 1rem .9rem 1.2rem;border-bottom:1px solid var(--trait)}
+.recherche-ligne > svg{width:22px;height:22px;color:var(--bleu);flex:none}
+.recherche-champ{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:1.15rem;color:var(--texte);background:transparent;padding:.35rem 0}
+.recherche-champ::-webkit-search-cancel-button{display:none}
+.recherche-fermer{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:var(--ciel);color:var(--navy);font-size:1.5rem;line-height:1;cursor:pointer}
+.recherche-fermer:hover{background:var(--trait)}
+.recherche-sugg{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:1rem 1.2rem}
+.recherche-sugg[hidden]{display:none}
+.recherche-sugg-titre{width:100%;font-size:.85rem;font-weight:700;color:var(--doux)}
+.recherche-sugg button{font:inherit;font-size:.92rem;font-weight:700;color:var(--navy);background:var(--ciel);border:0;border-radius:16px 16px 16px 4px;padding:.4rem .85rem;cursor:pointer;transition:background-color .2s ease}
+.recherche-sugg button:hover{background:var(--trait)}
+.recherche-res{list-style:none;margin:0;padding:.4rem;overflow-y:auto}
+.recherche-res a{display:block;text-decoration:none;padding:.75rem .9rem;border-radius:18px 18px 18px 4px;transition:background-color .15s ease}
+.recherche-res li.actif a,.recherche-res a:hover,.recherche-res a:focus-visible{background:var(--ciel)}
+.rres-chemin{display:block;font-size:.8rem;font-weight:700;color:var(--bleu);margin-bottom:.1rem}
+.rres-titre{display:block;font-weight:700;line-height:1.3}
+.rres-extrait{display:block;font-size:.92rem;color:var(--doux);margin-top:.2rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.recherche-res mark{background:#ffe680;color:inherit;border-radius:3px;padding:0 .1em}
+.recherche-vide{margin:0;padding:1.2rem 1.4rem 1.4rem;color:var(--doux)}
+.recherche-vide[hidden]{display:none}
+[dir="rtl"] .recherche-ligne{padding:.9rem 1.2rem .9rem 1rem}
+/* Mise en évidence de l'endroit trouvé */
+.trouve{animation:rTrouve 2.2s ease}
+@keyframes rTrouve{0%,35%{box-shadow:0 0 0 3px #ffd800,0 0 0 9px rgba(255,216,0,.35)}100%{box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.recherche-fond,.recherche-boite,.trouve{animation:none}}
+
+/* Boutons de téléchargement des flyers */
+.telecharger{margin:1rem 0 0;max-width:none}
+.telecharger .bouton{margin-top:0;background:var(--c);animation:none;display:inline-flex;align-items:center;gap:.5rem}
+.telecharger .bouton svg{width:18px;height:18px;flex:none;transition:transform .35s var(--ease)}
+.telecharger .bouton:hover{filter:brightness(1.1)}
+.telecharger .bouton:hover svg{transform:translateY(2px)}
+.encart > .telecharger{margin:1.1rem 0 0}
+.telecharger + .mini-carte{margin-top:1.1rem}
+
+/* Violences conjugales : numéros d'urgence */
+.urgences{margin:0 0 1.2rem;padding:1.4rem 1.5rem 1.5rem;border-radius:30px 30px 30px 6px;background:linear-gradient(135deg,#fff4f7,#fff 60%);box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 22%,white) inset}
+.urgences-titre{margin:0 0 .9rem;font-weight:700;font-size:1.15rem;color:var(--c)}
+.urgences-grille{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+.num{--n:var(--navy);display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem;border-radius:18px 18px 18px 4px;background:var(--n);color:#fff;text-decoration:none;line-height:1.2;
+  transition:transform .35s cubic-bezier(.2,.9,.25,1.2),box-shadow .35s ease}
+.num b{font-size:1.9rem;line-height:1;letter-spacing:-.01em}
+.num span{font-size:.88rem;font-weight:700;opacity:.92}
+.num:hover,.num:focus-visible{transform:translateY(-4px);box-shadow:0 14px 26px -14px var(--n)}
+.num.n-bleu{--n:#1f4e8c}.num.n-rouge{--n:#c8102e}.num.n-ciel{--n:#4b8fbf}.num.n-navy{--n:var(--navy)}
+.num.n-large{grid-column:1 / -1;flex-direction:row;align-items:center;gap:.9rem}
+.num-3919{display:flex;align-items:center;gap:1rem;margin-top:.8rem;padding:.9rem 1.1rem;border-radius:18px 18px 18px 4px;background:#e1000f;color:#fff;text-decoration:none;
+  transition:transform .35s cubic-bezier(.2,.9,.25,1.2),box-shadow .35s ease}
+.num-3919 b{font-size:2.3rem;line-height:1;letter-spacing:-.02em;padding-right:1rem;border-right:2px solid rgba(255,255,255,.5)}
+.num-3919 > span{display:flex;flex-direction:column;gap:.1rem;line-height:1.25}
+.num-3919 strong{font-size:1.1rem;text-transform:uppercase;letter-spacing:.02em}
+.num-3919:hover,.num-3919:focus-visible{transform:translateY(-4px);box-shadow:0 16px 30px -14px #e1000f}
+[dir="rtl"] .num-3919 b{padding-right:0;border-right:0;padding-left:1rem;border-left:2px solid rgba(255,255,255,.5)}
+@media (max-width:640px){.urgences-grille{grid-template-columns:repeat(2,minmax(0,1fr))}.num-3919 b{font-size:1.9rem}.urgences{padding:1.1rem}}
+
+/* ===================== EFFETS VISUELS (repris du site de vaccination au collège) ===================== */
+/* Fond : halos lents aux couleurs du logo et de la page */
+body{background:transparent}
+html{background:#fff}
+.halo{position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38vmax 38vmax at 18% 70%, color-mix(in srgb,var(--canard) 13%,transparent), transparent 70%),
+    radial-gradient(40vmax 40vmax at 84% 64%, color-mix(in srgb,var(--c,var(--bleu)) 12%,transparent), transparent 70%),
+    radial-gradient(30vmax 30vmax at 50% 8%, color-mix(in srgb,var(--bleu) 8%,transparent), transparent 70%);
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(2vmax,-1.5vmax,0) rotate(4deg)}}
+.infos{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--ciel) 85%,transparent) 30%)}
+
+/* En-tête : logos qui réagissent au survol */
+.entete a img{transition:width .3s var(--ease),opacity .2s ease}
+.entete a:hover img{opacity:.75}
+
+/* Titres qui montent mot à mot */
+h1.mots{animation:none}
+h1 .w{display:inline-block;opacity:0;transform:translateY(40%);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--k) * 90ms + 250ms)}
+h1.sans-anim .w{animation:none;opacity:1;transform:none}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* Éventail : une fois ouvert, les pétales répondent au survol des portes */
+.eventail.ouvert .p.pret{animation:none;opacity:1;transform:none;transition:transform .55s cubic-bezier(.2,.9,.25,1.25),filter .4s ease,fill .4s ease}
+body[class*="survol-"] .eventail .p.pret{filter:saturate(.35) opacity(.5)}
+body.survol-p1 .eventail .p1.pret,body.survol-p2 .eventail .p2.pret,body.survol-p3 .eventail .p3.pret,
+body.survol-p4 .eventail .p4.pret,body.survol-p5 .eventail .p5.pret{filter:none;transform:scale(1.12)}
+body.survol-femmes .eventail .p3{fill:#c2306a}
+
+/* Portes : inclinaison, lumière qui suit le pointeur, barre de couleur, flèche qui pulse, filigrane */
+.grille{perspective:1200px}
+.porte{overflow:hidden;isolation:isolate;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px var(--trait) inset,0 18px 40px -26px color-mix(in srgb,var(--c) 45%,transparent)}
+.porte.apparait.vu{transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));
+  transition:opacity .7s var(--ease),transform .25s ease,box-shadow .45s ease,background-color .35s ease}
+.porte::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.75;transition:opacity .4s ease;
+  background:radial-gradient(520px circle at var(--mx,80%) var(--my,0%), color-mix(in srgb,var(--c) 14%,transparent), transparent 60%)}
+.porte::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--c);transform-origin:left;transform:scaleX(.18);transition:transform .7s cubic-bezier(.2,.9,.25,1)}
+[dir="rtl"] .porte::after{transform-origin:right}
+.porte:hover,.porte:focus-visible{--ty:-6px;background:#fff;box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 45%,transparent) inset,0 34px 60px -24px color-mix(in srgb,var(--c) 45%,transparent)}
+.porte:hover::after,.porte:focus-visible::after{transform:scaleX(1)}
+.porte:hover::before{opacity:1}
+.porte .aller{display:flex;align-items:center;gap:.9rem;margin-top:auto}
+.porte .detail{flex:1}
+.porte .fleche{position:relative;display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:var(--c);color:#fff;
+  box-shadow:0 10px 22px -8px var(--c);transition:transform .5s cubic-bezier(.2,.9,.25,1.3)}
+.porte .fleche::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--c);opacity:0}
+.porte .aller .fleche svg{width:20px;height:20px;margin:0;vertical-align:0;transition:none}
+.porte:hover .aller svg,.porte:focus-visible .aller svg{transform:none}
+.porte:hover .fleche,.porte:focus-visible .fleche{transform:translateX(6px)}
+.porte:hover .fleche::before,.porte:focus-visible .fleche::before{animation:ring 1.4s ease-out infinite}
+@keyframes ring{0%{opacity:.6;transform:scale(.8)}100%{opacity:0;transform:scale(1.5)}}
+[dir="rtl"] .porte .fleche svg,[dir="rtl"] .porte:hover .aller svg{transform:scaleX(-1)}
+[dir="rtl"] .porte:hover .fleche{transform:translateX(-6px)}
+.porte .marque{position:absolute;right:-26px;bottom:-30px;width:170px;height:170px;z-index:-1;opacity:.08;color:var(--c);pointer-events:none;
+  transition:transform .9s cubic-bezier(.2,.9,.25,1),opacity .5s ease}
+[dir="rtl"] .porte .marque{right:auto;left:-26px}
+.porte:hover .marque{transform:rotate(-14deg) scale(1.12);opacity:.16}
+
+/* Cartes vivantes : lumière qui suit le pointeur et barre de couleur */
+.lieu,.contact,.suite .carte{position:relative;overflow:hidden;isolation:isolate}
+.lieu::before,.contact::before,.suite .carte::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s ease;pointer-events:none;
+  background:radial-gradient(480px circle at var(--mx,80%) var(--my,0%), color-mix(in srgb,var(--pt,var(--c,var(--bleu))) 13%,transparent), transparent 60%)}
+.lieu::after,.contact::after,.suite .carte::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--pt,var(--c,var(--bleu)));transform-origin:left;transform:scaleX(0);transition:transform .7s cubic-bezier(.2,.9,.25,1);pointer-events:none}
+.lieu:hover::before,.contact:hover::before,.suite .carte:hover::before{opacity:1}
+.lieu:hover::after,.contact:hover::after,.suite .carte:hover::after{transform:scaleX(1)}
+.contact,.suite .carte{transition:transform .35s cubic-bezier(.2,.9,.25,1.2),box-shadow .35s ease}
+.contact:hover,.suite .carte:hover{transform:translateY(-4px)}
+.contact:hover{box-shadow:0 30px 55px -30px rgba(18,54,94,.55)}
+
+/* Lieux d'accueil (accueil) : comme les cartes de contact du site collège */
+.lieux-accueil li{position:relative;border:1px solid var(--trait);transition:transform .35s cubic-bezier(.2,.9,.25,1.2),border-color .3s ease,box-shadow .35s ease}
+.lieux-accueil li:hover{transform:translateY(-3px);border-color:var(--bleu);box-shadow:0 16px 30px -18px var(--bleu)}
+.adresse-lien svg{transition:transform .45s cubic-bezier(.2,.9,.25,1.4)}
+.adresse-lien:hover svg,.lieux-accueil li:hover .adresse-lien svg{transform:rotate(-8deg) scale(1.15)}
+
+/* Encarts et questions : légère lumière au survol */
+.encart{transition:box-shadow .35s ease,transform .35s cubic-bezier(.2,.9,.25,1.2)}
+.encart:hover{box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 45%,white) inset,0 18px 36px -26px color-mix(in srgb,var(--c) 60%,transparent)}
+
+@media (max-width:760px){
+  .porte .marque{width:110px;height:110px;right:-18px;bottom:-20px}
+  .porte .fleche{flex-basis:36px;width:36px;height:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .halo{animation:none}
+  h1 .w{opacity:1;transform:none}
+  .porte.apparait.vu{transform:none}
+}
