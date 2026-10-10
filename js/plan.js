@@ -13,7 +13,7 @@
       if(img && img.getAttribute('src')!==PLANS[l]) img.setAttribute('src',PLANS[l]);
       if(s) s.value=l;
     });
-    document.querySelectorAll('.plan-pdf').forEach(function(a){ a.setAttribute('href',PDFS[l]); a.setAttribute('download','plaquette-pass-'+l+'.pdf'); });
+    document.querySelectorAll('.plan-pdf').forEach(function(a){ a.setAttribute('href',PDFS[l]); a.removeAttribute('download'); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); });
   }
   figs.forEach(function(f){
     var s=f.querySelector('.plan-langue');
