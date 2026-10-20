@@ -64,7 +64,7 @@
     if(document.getElementById('admin-styles')) return;
     var st=document.createElement('style'); st.id='admin-styles';
     st.textContent=
-    '.adm-fond{position:fixed;inset:0;z-index:500;background:rgba(18,54,94,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:max(4vh,env(safe-area-inset-top)) 1rem 2rem;direction:ltr;text-align:left}'+
+    '.adm-fond{position:fixed;inset:0;z-index:500;background:rgba(18,54,94,.62);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:max(4vh,env(safe-area-inset-top)) 1rem 2rem;direction:ltr;text-align:left}'+
     '.adm{width:100%;max-width:720px;background:#fff;border-radius:28px 28px 28px 6px;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);padding:1.4rem 1.5rem 1.6rem;color:#12365e;font-family:inherit;font-size:1rem}'+
     '.adm h2{margin:0 0 .3rem;font-size:1.4rem}.adm h3{margin:1.4rem 0 .6rem;font-size:1.1rem}'+
     '.adm-tete{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.6rem}'+
@@ -87,16 +87,16 @@
     '.adm-liste .act{display:flex;gap:.4rem;flex:none}.adm-liste .act button{font:inherit;font-size:.9rem;border:0;border-radius:12px;padding:.4rem .7rem;cursor:pointer;background:#fff;color:#12365e;font-weight:700}'+
     '.adm-onglets{display:flex;gap:.4rem;margin:.6rem 0 0}.adm-onglets button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:.55rem 1rem;cursor:pointer;background:#eef6fb;color:#12365e}.adm-onglets button.on{background:#12365e;color:#fff}'+
     '.adm-aide{font-size:.92rem;background:#fff8e1;border-radius:14px;padding:.7rem .9rem;color:#5b4500}'+
-    '.adm-aide ol{margin:.3rem 0 0;padding-left:1.2rem}'+'.adm-sel{width:100%;font:inherit;font-size:16px;padding:.6rem .7rem;border:2px solid #dbe8f2;border-radius:14px;background:#fff;color:#12365e}'+'.adm-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 1rem}'+'.adm-outils{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .3rem}.adm-outils button{font:inherit;font-size:.95rem;border:1px solid #dbe8f2;background:#fff;color:#12365e;border-radius:10px;padding:.35rem .7rem;cursor:pointer;min-width:38px}'+'.adm-outils .pastille{width:30px;min-width:30px;height:30px;border-radius:50%;padding:0;border:2px solid #fff;box-shadow:0 0 0 1px #dbe8f2}'+'.adm-note{font-size:.85rem !important;margin:.1rem 0 .3rem !important}'+'.adm-apercu{margin-top:1rem;padding:1rem;border-radius:20px;background:#f5f8fb;border:1px dashed #b8cfe0}.adm-apercu > strong{display:block;margin-bottom:.6rem;font-size:.9rem;color:#4a6684}'+'.adm-apercu .annonce{padding:0}.adm-apercu .annonce .wrap{margin:0}';
+    '.adm-aide ol{margin:.3rem 0 0;padding-left:1.2rem}'+'html.adm-ouvert .halo,html.adm-ouvert main *,html.adm-ouvert main *::before,html.adm-ouvert main *::after,html.adm-ouvert .entete *{animation-play-state:paused !important}html.adm-ouvert .halo{animation:none !important}html.adm-ouvert main{visibility:hidden}'+'.adm-sel{width:100%;font:inherit;font-size:16px;padding:.6rem .7rem;border:2px solid #dbe8f2;border-radius:14px;background:#fff;color:#12365e}'+'.adm-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 1rem}'+'.adm-outils{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .3rem}.adm-outils button{font:inherit;font-size:.95rem;border:1px solid #dbe8f2;background:#fff;color:#12365e;border-radius:10px;padding:.35rem .7rem;cursor:pointer;min-width:38px}'+'.adm-outils .pastille{width:30px;min-width:30px;height:30px;border-radius:50%;padding:0;border:2px solid #fff;box-shadow:0 0 0 1px #dbe8f2}'+'.adm-note{font-size:.85rem !important;margin:.1rem 0 .3rem !important}'+'.adm-apercu{margin-top:1rem;padding:1rem;border-radius:20px;background:#f5f8fb;border:1px dashed #b8cfe0}.adm-apercu > strong{display:block;margin-bottom:.6rem;font-size:.9rem;color:#4a6684}'+'.adm-apercu .annonce{padding:0}.adm-apercu .annonce .wrap{margin:0}';
     document.head.appendChild(st);
   }
-  function fermer(){ if(fond){fond.remove();fond=null;document.documentElement.classList.remove('recherche-ouverte');} }
+  function fermer(){ if(fond){fond.remove();fond=null;document.documentElement.classList.remove('recherche-ouverte','adm-ouvert');} }
   function cadre(titre,html){
     styles(); if(fond) fond.remove();
     fond=el('<div class="adm-fond" role="dialog" aria-modal="true" aria-label="Espace admin"><div class="adm" lang="fr"><div class="adm-tete"><h2>'+esc(titre)+'</h2><button type="button" class="adm-x" aria-label="Fermer">×</button></div>'+html+'</div></div>');
     fond.querySelector('.adm-x').addEventListener('click',fermer);
     fond.addEventListener('click',function(e){if(e.target===fond)fermer();});
-    document.body.appendChild(fond); document.documentElement.classList.add('recherche-ouverte');
+    document.body.appendChild(fond); document.documentElement.classList.add('recherche-ouverte','adm-ouvert');
     var champ=fond.querySelector('input'); if(champ) setTimeout(function(){champ.focus();},50);
     return fond.querySelector('.adm');
   }
@@ -250,12 +250,13 @@
         '<label for="adm-ban-txt">Message</label>'+barreOutils('adm-ban-txt')+'<textarea id="adm-ban-txt" maxlength="400">'+esc(donnees.annonce.texte)+'</textarea>'+
         '<div class="adm-grille">'+choix('adm-ban-th','theme',sb.theme||'jaune','Couleur')+choix('adm-ban-an','animB',sb.anim||'aucune','Animation')+'</div>'+
         '<div class="adm-apercu"><strong>Aperçu</strong><div class="adm-ap"></div></div>';
-      function apercuB(){ var ap=z.querySelector('.adm-ap'); ap.innerHTML = donnees.annonce.texte && window.USP_RENDU ? window.USP_RENDU.bandeau(donnees.annonce) : '<em>Écrivez un message pour voir l\'aperçu.</em>'; }
+      var minB=null; function apercuB(){ clearTimeout(minB); minB=setTimeout(apercuBmaintenant,250); }
+      function apercuBmaintenant(){ var ap=z.querySelector('.adm-ap'); ap.innerHTML = donnees.annonce.texte && window.USP_RENDU ? window.USP_RENDU.bandeau(donnees.annonce) : '<em>Écrivez un message pour voir l\'aperçu.</em>'; }
       z.querySelector('#adm-ban-on').addEventListener('change',function(){donnees.annonce.actif=this.checked;});
       z.querySelector('#adm-ban-txt').addEventListener('input',function(){donnees.annonce.texte=this.value; apercuB();});
       z.querySelector('#adm-ban-th').addEventListener('change',function(){sb.theme=this.value; apercuB();});
       z.querySelector('#adm-ban-an').addEventListener('change',function(){sb.anim=this.value; apercuB();});
-      brancherOutils(z); apercuB();
+      brancherOutils(z); apercuBmaintenant();
       return;
     }
     if(onglet==='reglages'){
@@ -284,10 +285,11 @@
       return {id:a?a.id:('a'+Date.now().toString(36)),titre:z.querySelector('#adm-t').value.trim(),date:z.querySelector('#adm-d').value||aujourdhui(),texte:z.querySelector('#adm-x').value.trim(),lien:z.querySelector('#adm-l').value.trim(),epingle:z.querySelector('#adm-e').checked,
         style:{police:z.querySelector('#adm-po').value,cTitre:z.querySelector('#adm-ct').value,tTitre:z.querySelector('#adm-tt').value,tTexte:z.querySelector('#adm-tx').value,fond:z.querySelector('#adm-fo').value,anim:z.querySelector('#adm-an').value}};
     }
-    function apercuA(){ var it=lireForm(), ap=z.querySelector('.adm-ap'); ap.innerHTML = it.titre && window.USP_RENDU ? window.USP_RENDU.actu(it) : '<em>Écrivez un titre pour voir l\'aperçu.</em>'; }
+    var minA=null; function apercuA(){ clearTimeout(minA); minA=setTimeout(apercuAmaintenant,250); }
+    function apercuAmaintenant(){ var it=lireForm(), ap=z.querySelector('.adm-ap'); ap.innerHTML = it.titre && window.USP_RENDU ? window.USP_RENDU.actu(it) : '<em>Écrivez un titre pour voir l\'aperçu.</em>'; }
     z.querySelectorAll('#adm-t,#adm-x,#adm-d,#adm-l').forEach(function(x){x.addEventListener('input',apercuA);});
     z.querySelectorAll('.adm-sel,#adm-e').forEach(function(x){x.addEventListener('change',apercuA);});
-    brancherOutils(z,apercuA); apercuA();
+    brancherOutils(z,apercuA); apercuAmaintenant();
     z.querySelectorAll('[data-m]').forEach(function(x){x.addEventListener('click',function(){edition=x.getAttribute('data-m');dessiner(b);});});
     z.querySelectorAll('[data-s]').forEach(function(x){x.addEventListener('click',function(){
       if(!confirm('Supprimer cette actualité ? Elle disparaîtra du site après la publication.')) return;
