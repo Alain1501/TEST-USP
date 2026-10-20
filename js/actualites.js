@@ -1,2 +1,2 @@
 /* Fichier mis à jour par l'espace admin du site. Ne pas modifier à la main. */
-window.USP_ACTU = {"actualites":[{"id":"amvh80er3","titre":"Fermeture exceptionnelle","date":"2026-10-20","html":"<span style=\"color:#be163a\"><a href=\"ou-et-quand.html\">voir nos date</a></span>","epingle":false,"style":{"anim":"battement","duree":"3","repet":"","delai":"","police":"site","cTitre":"bleu","tTitre":"normale","tTexte":"normale","fond":"blanc"},"boutons":[]}],"annonces":[]};
+window.USP_ACTU = {"actualites":[],"annonces":[]};
