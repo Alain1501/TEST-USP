@@ -1,2 +1,2 @@
 /* Fichier mis à jour par l'espace admin du site. Ne pas modifier à la main. */
-window.USP_ACTU = {"annonce":{"actif":false,"texte":"","style":{}},"actualites":[{"id":"amvh6wipr","titre":"Fermeture exceptionnelle","date":"2026-10-20","texte":"nous serons  fermé pendant les vacances  de Noël de 24/12/2026 au 01/01/2027","lien":"","epingle":false,"style":{"police":"site","cTitre":"rouge","tTitre":"normale","tTexte":"normale","fond":"blanc","anim":"respiration"}}]};
+window.USP_ACTU = {"annonce":{"actif":false,"texte":"","style":{"anim":"pulsation","theme":"vert"}},"actualites":[]};

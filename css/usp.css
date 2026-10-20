@@ -1326,3 +1326,53 @@ body.survol-femmes .eventail .p3{fill:#c2306a}
 @media (max-width:560px){.annonce .wrap{font-size:1rem;padding:.85rem 1rem;gap:.8rem}.annonce-ico{width:38px;height:38px}}
 @media (prefers-reduced-motion:reduce){.annonce .wrap::before{display:none}}
 @media print{.annonce .wrap{box-shadow:none;border:1px solid #999;background:#fff}}
+
+/* ===== Animations au choix (actualités et bandeau), durée, répétition et délai réglables ===== */
+.fx-apparition{animation:fxMonte var(--fxd,.9s) var(--ease) var(--fxl,0s) var(--fxr,1) both}
+.fx-fondu{animation:fxFondu var(--fxd,1s) ease var(--fxl,0s) var(--fxr,1) both}
+.fx-gauche{animation:fxGauche var(--fxd,.9s) var(--ease) var(--fxl,0s) var(--fxr,1) both}
+.fx-droite{animation:fxDroite var(--fxd,.9s) var(--ease) var(--fxl,0s) var(--fxr,1) both}
+.fx-zoom{animation:fxZoom var(--fxd,.8s) cubic-bezier(.2,.9,.25,1.2) var(--fxl,0s) var(--fxr,1) both}
+.fx-rebond{animation:fxRebond var(--fxd,1.2s) ease var(--fxl,0s) var(--fxr,1) both}
+.fx-battement{animation:fxBattement var(--fxd,1.6s) ease-in-out var(--fxl,0s) var(--fxr,infinite)}
+.fx-respiration{transform-origin:20% 100%;animation:fxRespire var(--fxd,6s) ease-in-out var(--fxl,0s) var(--fxr,infinite)}
+.fx-secousse{animation:fxSecousse var(--fxd,.8s) ease var(--fxl,0s) var(--fxr,2)}
+.fx-clignote{animation:fxClignote var(--fxd,2s) ease-in-out var(--fxl,0s) var(--fxr,infinite)}
+.actu.fx-pulsation::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--actu-titre,var(--bleu));pointer-events:none;animation:pulseAnneau var(--fxd,2.6s) ease-out var(--fxl,0s) var(--fxr,infinite)}
+.actu.fx-reflet::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-100%);animation:fxReflet var(--fxd,2.4s) ease-in-out var(--fxl,0s) var(--fxr,infinite)}
+.actu.fx-mots h3 .w{display:inline-block;opacity:0;transform:translateY(40%);animation:rise var(--fxd,.8s) cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--k) * 90ms + var(--fxl,0s) + 200ms)}
+.actu.fx-lumiere::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(420px circle at var(--mx,80%) var(--my,0%),color-mix(in srgb,var(--actu-titre,#006997) 16%,transparent),transparent 60%)}
+.actu.fx-lumiere:hover{box-shadow:0 0 0 2px color-mix(in srgb,var(--actu-titre,#006997) 40%,transparent) inset,0 26px 50px -26px color-mix(in srgb,var(--actu-titre,#006997) 55%,transparent)}
+.annonce.fx-pulsation .annonce-ico::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--ac);animation:ring var(--fxd,1.4s) ease-out var(--fxl,0s) var(--fxr,infinite)}
+.annonce.fx-reflet .wrap::before{animation:annonceReflet var(--fxd,2.4s) ease-in-out var(--fxl,0s) var(--fxr,infinite) both}
+.annonce.fx-apparition{animation-name:bandeauDescend}
+@keyframes fxMonte{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fxFondu{from{opacity:0}to{opacity:1}}
+@keyframes fxGauche{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
+@keyframes fxDroite{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
+@keyframes fxZoom{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes fxRebond{0%{opacity:0;transform:translateY(-30px)}45%{opacity:1;transform:translateY(0)}62%{transform:translateY(-10px)}78%{transform:translateY(0)}90%{transform:translateY(-3px)}100%{opacity:1;transform:none}}
+@keyframes fxBattement{0%,100%{transform:scale(1)}15%{transform:scale(1.025)}30%{transform:scale(1)}45%{transform:scale(1.02)}}
+@keyframes fxRespire{0%,100%{transform:rotate(0)}50%{transform:rotate(-.8deg) translateY(-2px)}}
+@keyframes fxSecousse{0%,100%{transform:none}20%{transform:translateX(-5px) rotate(-.5deg)}40%{transform:translateX(5px) rotate(.5deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+@keyframes fxClignote{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes fxReflet{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+/* Boutons et liens dans les actualités et le bandeau */
+.actu-texte p{margin:0 0 .5rem}
+.actu-texte a,.annonce-texte a{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.actu-boutons{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.actu-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .95rem;border-radius:16px 16px 16px 4px;background:var(--actu-titre,var(--navy));color:#fff !important;text-decoration:none !important;font-weight:700;font-size:.95rem;transition:transform .25s var(--ease),filter .25s ease}
+.actu-btn svg{width:18px;height:18px;flex:none}
+.actu-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.annonce .actu-boutons{margin-top:.5rem}
+.annonce .actu-btn{background:var(--ac);font-size:.9rem;padding:.45rem .85rem}
+.annonce-texte p{margin:0}
+.annonce.theme-orange{--a1:#fff3e6;--a2:#fddcb8;--ac:#a85406;--at:#5a2e00}
+.annonce.theme-rose{--a1:#fdf0f5;--a2:#f8d3e2;--ac:#c2306a;--at:#6b1236}
+.annonce.theme-marine{--a1:#16406d;--a2:#12365e;--ac:#ffd800;--at:#ffffff}
+.annonce.theme-marine .annonce-ico svg{color:#12365e !important}
+@media (prefers-reduced-motion:reduce){[class*="fx-"],[class*="fx-"]::before,[class*="fx-"]::after,.fx-mots h3 .w{animation:none !important;opacity:1 !important;transform:none !important}}
+
+/* Plusieurs bandeaux empilés */
+.annonces{padding:0 0 .2rem}
+.annonces .annonce + .annonce{padding-top:.6rem}
