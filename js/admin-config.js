@@ -1,0 +1,2 @@
+/* Configuration de l'espace admin. Créée au premier lancement, la clé GitHub y est chiffrée par le mot de passe. */
+window.USP_ADMIN = {"depot":"Alain1501/TEST-USP","branche":"main","dossier":"","sel":"TVJ4rWRXnKYpk51Bem+zrw==","iv":"CKo4wspeerVyOo//","jeton":"PGeOXWIRKmch83LVQvghU3MZlg1xL5qr7vDkvoiWiOW2RiviMXs5MNbEGQdaoebi3encCClJSODP4NPJqOz0NQH8k3cgDehbjZMrHPhUnTKXPvA5ZnEWUcwRFCuYkFmyGxCULlOU9QwnRraBhQ=="};
