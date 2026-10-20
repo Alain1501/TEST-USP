@@ -87,7 +87,7 @@
     '.adm-liste .act{display:flex;gap:.4rem;flex:none}.adm-liste .act button{font:inherit;font-size:.9rem;border:0;border-radius:12px;padding:.4rem .7rem;cursor:pointer;background:#fff;color:#12365e;font-weight:700}'+
     '.adm-onglets{display:flex;gap:.4rem;margin:.6rem 0 0}.adm-onglets button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:.55rem 1rem;cursor:pointer;background:#eef6fb;color:#12365e}.adm-onglets button.on{background:#12365e;color:#fff}'+
     '.adm-aide{font-size:.92rem;background:#fff8e1;border-radius:14px;padding:.7rem .9rem;color:#5b4500}'+
-    '.adm-aide ol{margin:.3rem 0 0;padding-left:1.2rem}';
+    '.adm-aide ol{margin:.3rem 0 0;padding-left:1.2rem}'+'.adm-sel{width:100%;font:inherit;font-size:16px;padding:.6rem .7rem;border:2px solid #dbe8f2;border-radius:14px;background:#fff;color:#12365e}'+'.adm-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 1rem}'+'.adm-outils{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .3rem}.adm-outils button{font:inherit;font-size:.95rem;border:1px solid #dbe8f2;background:#fff;color:#12365e;border-radius:10px;padding:.35rem .7rem;cursor:pointer;min-width:38px}'+'.adm-outils .pastille{width:30px;min-width:30px;height:30px;border-radius:50%;padding:0;border:2px solid #fff;box-shadow:0 0 0 1px #dbe8f2}'+'.adm-note{font-size:.85rem !important;margin:.1rem 0 .3rem !important}'+'.adm-apercu{margin-top:1rem;padding:1rem;border-radius:20px;background:#f5f8fb;border:1px dashed #b8cfe0}.adm-apercu > strong{display:block;margin-bottom:.6rem;font-size:.9rem;color:#4a6684}'+'.adm-apercu .annonce{padding:0}.adm-apercu .annonce .wrap{margin:0}';
     document.head.appendChild(st);
   }
   function fermer(){ if(fond){fond.remove();fond=null;document.documentElement.classList.remove('recherche-ouverte');} }
@@ -186,9 +186,46 @@
     bt.disabled=true; message(boite,'Publication en cours…',true);
     var contenu='/* Fichier mis à jour par l\'espace admin du site. Ne pas modifier à la main. */\nwindow.USP_ACTU = '+JSON.stringify(donnees)+';\n';
     return ecrireFichier(FICHIER_ACTU,contenu,'Actualités et bandeau, mise à jour depuis l\'espace admin').then(function(){
-      bt.disabled=false; window.USP_ACTU=JSON.parse(JSON.stringify(donnees));
+      bt.disabled=false; window.USP_ACTU=JSON.parse(JSON.stringify(donnees)); if(window.USP_AFFICHER_ACTUS) window.USP_AFFICHER_ACTUS();
       message(boite,'Publié. Les visiteurs verront la mise à jour d\'ici quelques minutes.',true);
     }).catch(function(e){bt.disabled=false; message(boite,messageErreur(e));});
+  }
+
+
+  // ---------- Mise en forme ----------
+  var OPTS={
+    police:[['site','Police du site'],['classique','Classique (Georgia)'],['large','Large (Verdana)'],['moderne','Moderne (Trebuchet)']],
+    tTitre:[['petite','Petite'],['normale','Normale'],['grande','Grande'],['tresgrande','Très grande']],
+    tTexte:[['normale','Normale'],['grande','Grande'],['tresgrande','Très grande']],
+    cTitre:[['navy','Bleu marine'],['bleu','Bleu'],['canard','Vert canard'],['vert','Vert'],['orange','Orange'],['rouge','Rouge'],['rose','Rose'],['noir','Noir']],
+    fond:[['blanc','Blanc'],['ciel','Bleu ciel'],['jaune','Jaune pâle'],['rose','Rose pâle'],['vert','Vert pâle']],
+    anim:[['aucune','Aucune'],['apparition','Apparition en douceur'],['mots','Titre qui monte mot à mot'],['pulsation','Anneau qui pulse'],['respiration','Léger balancement'],['lumiere','Lumière qui suit la souris']],
+    theme:[['jaune','Jaune'],['rouge','Rouge'],['bleu','Bleu'],['vert','Vert']],
+    animB:[['aucune','Aucune'],['apparition','Descend en douceur'],['pulsation','Icône qui pulse']]
+  };
+  var COULEURS_TEXTE=[['rouge','#be163a'],['bleu','#006997'],['canard','#0e7376'],['vert','#2e7d32'],['orange','#a85406'],['rose','#c2306a'],['navy','#12365e']];
+  function choix(id,cle,val,lib){
+    return '<div><label for="'+id+'">'+lib+'</label><select id="'+id+'" class="adm-sel">'+OPTS[cle].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+esc(o[1])+'</option>';}).join('')+'</select></div>';
+  }
+  function barreOutils(idZone){
+    return '<div class="adm-outils" data-cible="'+idZone+'"><button type="button" data-f="gras" title="Gras"><b>G</b></button><button type="button" data-f="ital" title="Italique"><i>I</i></button><button type="button" data-f="liste" title="Liste à puces">• Liste</button>'+
+      COULEURS_TEXTE.map(function(c){return '<button type="button" data-c="'+c[0]+'" title="Texte en '+c[0]+'" class="pastille" style="background:'+c[1]+'"></button>';}).join('')+'</div>'+
+      '<p class="adm-note">Sélectionnez des mots puis cliquez sur un bouton. Exemples : **gras**, *italique*, [rouge]texte en rouge[/rouge], une ligne commençant par « - » devient une puce.</p>';
+  }
+  function brancherOutils(z,apres){
+    z.querySelectorAll('.adm-outils').forEach(function(bar){
+      var ta=z.querySelector('#'+bar.getAttribute('data-cible'));
+      bar.addEventListener('click',function(e){
+        var bt=e.target.closest('button'); if(!bt) return;
+        var d=ta.selectionStart, f=ta.selectionEnd, sel=ta.value.slice(d,f)||'texte', av, ap;
+        if(bt.dataset.f==='gras'){av='**';ap='**';}
+        else if(bt.dataset.f==='ital'){av='*';ap='*';}
+        else if(bt.dataset.f==='liste'){ sel=sel.split('\n').map(function(l){return /^\s*-\s/.test(l)?l:'- '+l;}).join('\n'); av=(d>0&&ta.value[d-1]!=='\n')?'\n':''; ap=''; }
+        else if(bt.dataset.c){av='['+bt.dataset.c+']';ap='[/'+bt.dataset.c+']';}
+        var res = bt.dataset.f==='liste' ? av+sel : sel.split('\n').map(function(l){return l.trim()?av+l+ap:l;}).join('\n');
+        ta.setRangeText(res,d,f,'select'); ta.focus(); ta.dispatchEvent(new Event('input',{bubbles:true})); if(apres) apres();
+      });
+    });
   }
 
   // ---------- Panneau ----------
@@ -207,11 +244,18 @@
     b.querySelectorAll('.adm-onglets button').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-o')===onglet);});
     var z=b.querySelector('.adm-zone'); b.querySelector('.adm-msg').textContent='';
     if(onglet==='bandeau'){
-      z.innerHTML='<p>Le bandeau jaune s\'affiche en haut de toutes les pages, par exemple pour une fermeture exceptionnelle ou un changement d\'horaires.</p>'+
+      var sb=donnees.annonce.style||(donnees.annonce.style={});
+      z.innerHTML='<p>Le bandeau s\'affiche en haut de toutes les pages, par exemple pour une fermeture exceptionnelle ou un changement d\'horaires.</p>'+
         '<label class="coche"><input type="checkbox" id="adm-ban-on"'+(donnees.annonce.actif?' checked':'')+'> Afficher le bandeau</label>'+
-        '<label for="adm-ban-txt">Message</label><textarea id="adm-ban-txt" maxlength="300">'+esc(donnees.annonce.texte)+'</textarea>';
+        '<label for="adm-ban-txt">Message</label>'+barreOutils('adm-ban-txt')+'<textarea id="adm-ban-txt" maxlength="400">'+esc(donnees.annonce.texte)+'</textarea>'+
+        '<div class="adm-grille">'+choix('adm-ban-th','theme',sb.theme||'jaune','Couleur')+choix('adm-ban-an','animB',sb.anim||'aucune','Animation')+'</div>'+
+        '<div class="adm-apercu"><strong>Aperçu</strong><div class="adm-ap"></div></div>';
+      function apercuB(){ var ap=z.querySelector('.adm-ap'); ap.innerHTML = donnees.annonce.texte && window.USP_RENDU ? window.USP_RENDU.bandeau(donnees.annonce) : '<em>Écrivez un message pour voir l\'aperçu.</em>'; }
       z.querySelector('#adm-ban-on').addEventListener('change',function(){donnees.annonce.actif=this.checked;});
-      z.querySelector('#adm-ban-txt').addEventListener('input',function(){donnees.annonce.texte=this.value;});
+      z.querySelector('#adm-ban-txt').addEventListener('input',function(){donnees.annonce.texte=this.value; apercuB();});
+      z.querySelector('#adm-ban-th').addEventListener('change',function(){sb.theme=this.value; apercuB();});
+      z.querySelector('#adm-ban-an').addEventListener('change',function(){sb.anim=this.value; apercuB();});
+      brancherOutils(z); apercuB();
       return;
     }
     if(onglet==='reglages'){
@@ -229,11 +273,21 @@
     html+='<h3>'+(a?'Modifier l\'actualité':'Nouvelle actualité')+'</h3>'+
       '<label for="adm-t">Titre</label><input type="text" id="adm-t" maxlength="120" value="'+esc(a?a.titre:'')+'">'+
       '<label for="adm-d">Date</label><input type="date" id="adm-d" value="'+esc(a?a.date:aujourdhui())+'">'+
-      '<label for="adm-x">Texte</label><textarea id="adm-x" maxlength="1200">'+esc(a?a.texte:'')+'</textarea>'+
+      '<label for="adm-x">Texte</label>'+barreOutils('adm-x')+'<textarea id="adm-x" maxlength="1500">'+esc(a?a.texte:'')+'</textarea>'+
       '<label for="adm-l">Lien (facultatif, adresse internet ou page du site)</label><input type="text" id="adm-l" spellcheck="false" placeholder="https://… ou vaccination.html" value="'+esc(a?a.lien:'')+'">'+
       '<label class="coche"><input type="checkbox" id="adm-e"'+(a&&a.epingle?' checked':'')+'> Épingler en haut</label>'+
+      '<div class="adm-grille">'+choix('adm-po','police',((a&&a.style)||{}).police||'site','Police')+choix('adm-ct','cTitre',((a&&a.style)||{}).cTitre||'navy','Couleur du titre')+choix('adm-tt','tTitre',((a&&a.style)||{}).tTitre||'normale','Taille du titre')+choix('adm-tx','tTexte',((a&&a.style)||{}).tTexte||'normale','Taille du texte')+choix('adm-fo','fond',((a&&a.style)||{}).fond||'blanc','Fond de la carte')+choix('adm-an','anim',((a&&a.style)||{}).anim||'aucune','Animation')+'</div>'+
+      '<div class="adm-apercu"><strong>Aperçu</strong><div class="adm-ap actus-liste" style="grid-template-columns:1fr"></div></div>'+
       '<div class="adm-btns"><button type="button" class="adm-b" id="adm-add">'+(a?'Enregistrer la modification':'Ajouter')+'</button>'+(a?'<button type="button" class="adm-b sec" id="adm-annul">Annuler</button>':'')+'</div>';
     z.innerHTML=html;
+    function lireForm(){
+      return {id:a?a.id:('a'+Date.now().toString(36)),titre:z.querySelector('#adm-t').value.trim(),date:z.querySelector('#adm-d').value||aujourdhui(),texte:z.querySelector('#adm-x').value.trim(),lien:z.querySelector('#adm-l').value.trim(),epingle:z.querySelector('#adm-e').checked,
+        style:{police:z.querySelector('#adm-po').value,cTitre:z.querySelector('#adm-ct').value,tTitre:z.querySelector('#adm-tt').value,tTexte:z.querySelector('#adm-tx').value,fond:z.querySelector('#adm-fo').value,anim:z.querySelector('#adm-an').value}};
+    }
+    function apercuA(){ var it=lireForm(), ap=z.querySelector('.adm-ap'); ap.innerHTML = it.titre && window.USP_RENDU ? window.USP_RENDU.actu(it) : '<em>Écrivez un titre pour voir l\'aperçu.</em>'; }
+    z.querySelectorAll('#adm-t,#adm-x,#adm-d,#adm-l').forEach(function(x){x.addEventListener('input',apercuA);});
+    z.querySelectorAll('.adm-sel,#adm-e').forEach(function(x){x.addEventListener('change',apercuA);});
+    brancherOutils(z,apercuA); apercuA();
     z.querySelectorAll('[data-m]').forEach(function(x){x.addEventListener('click',function(){edition=x.getAttribute('data-m');dessiner(b);});});
     z.querySelectorAll('[data-s]').forEach(function(x){x.addEventListener('click',function(){
       if(!confirm('Supprimer cette actualité ? Elle disparaîtra du site après la publication.')) return;
@@ -243,7 +297,7 @@
     if(a) z.querySelector('#adm-annul').addEventListener('click',function(){edition=null;dessiner(b);});
     z.querySelector('#adm-add').addEventListener('click',function(){
       var t=z.querySelector('#adm-t').value.trim(); if(!t) return message(b,'Le titre est obligatoire.');
-      var item={id:a?a.id:('a'+Date.now().toString(36)),titre:t,date:z.querySelector('#adm-d').value||aujourdhui(),texte:z.querySelector('#adm-x').value.trim(),lien:z.querySelector('#adm-l').value.trim(),epingle:z.querySelector('#adm-e').checked};
+      var item=lireForm();
       if(item.lien && !/^(https?:\/\/|pdf\/|[\w-]+\.html)/.test(item.lien)) return message(b,'Le lien doit commencer par https:// ou être une page du site, par exemple vaccination.html.');
       if(a){donnees.actualites=donnees.actualites.map(function(y){return y.id===a.id?item:y;});} else {donnees.actualites.push(item);}
       edition=null; dessiner(b); message(b,'Enregistrée. Cliquez sur Publier pour mettre le site à jour.',true);
