@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page introuvable | Unité de Santé Publique Sud 77</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<style>
+:root{--navy:#12365e;--bleu:#006997;--doux:#4a6684;--ciel:#eef6fb}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:1.5rem;font-family:"Atkinson Hyperlegible",Verdana,"Segoe UI",Arial,sans-serif;color:var(--navy);
+  background:radial-gradient(40vmax 40vmax at 15% 80%,rgba(28,166,169,.12),transparent 70%),radial-gradient(40vmax 40vmax at 85% 20%,rgba(0,105,151,.1),transparent 70%),#fff}
+main{max-width:34rem;text-align:center}
+.ev{width:150px;height:150px;margin:0 auto .5rem;display:block}
+.code{font-size:1rem;font-weight:700;color:var(--doux);letter-spacing:.2em;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:.3rem 0 .8rem;line-height:1.1}
+p{font-size:1.15rem;line-height:1.55;color:var(--doux);margin:0 0 1.6rem}
+a{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:.85rem 1.4rem;border-radius:24px 24px 24px 4px}
+a:hover,a:focus-visible{background:var(--bleu)}
+a:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+<svg class="ev" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -25 410 410"><g transform="translate(172 290)"><path d="M0 0 C-150 -40 -170 -170 -95 -210 C-40 -170 -20 -80 0 0Z" fill="#006997"/><path d="M0 0 C-80 -90 -70 -240 0 -270 C60 -220 40 -90 0 0Z" fill="#1ca6a9"/><path d="M0 0 C-10 -120 60 -250 140 -240 C160 -170 90 -70 0 0Z" fill="#ffd800"/><path d="M0 0 C50 -90 170 -160 225 -110 C215 -40 110 -10 0 0Z" fill="#f1861b"/><path d="M0 -20 C80 -60 190 -50 200 10 C160 50 70 30 0 -20Z" fill="#be163a"/></g></svg>
+
+<p class="code">404</p>
+<h1 id="t">Page introuvable</h1>
+<p id="p">La page que vous cherchez n'existe pas ou a été déplacée.</p>
+<a id="a" href="/">Retour à l'accueil</a>
+</main>
+<script>
+(function(){
+  var T={"fr": ["Page introuvable", "La page que vous cherchez n'existe pas ou a été déplacée.", "Retour à l'accueil"], "en": ["Page not found", "The page you are looking for does not exist or has been moved.", "Back to home page"], "ar": ["الصفحة غير موجودة", "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.", "العودة إلى الصفحة الرئيسية"], "tr": ["Sayfa bulunamadı", "Aradığınız sayfa mevcut değil veya taşınmış.", "Ana sayfaya dön"], "ps": ["پاڼه ونه موندل شوه", "هغه پاڼه چې تاسو یې لټوئ شتون نه لري یا بل ځای ته وړل شوې ده.", "اصلي پاڼې ته ورګرځئ"], "ku": ["پەڕەکە نەدۆزرایەوە", "ئەو پەڕەیەی بەدوایدا دەگەڕێیت بوونی نییە یان گوازراوەتەوە.", "گەڕانەوە بۆ پەڕەی سەرەکی"], "ro": ["Pagina nu a fost găsită", "Pagina pe care o căutați nu există sau a fost mutată.", "Înapoi la pagina principală"], "ka": ["გვერდი ვერ მოიძებნა", "გვერდი, რომელსაც ეძებთ, არ არსებობს ან გადატანილია.", "მთავარ გვერდზე დაბრუნება"], "sq": ["Faqja nuk u gjet", "Faqja që kërkoni nuk ekziston ose është zhvendosur.", "Kthehu në faqen kryesore"], "am": ["ገጹ አልተገኘም", "የሚፈልጉት ገጽ የለም ወይም ተዛውሯል።", "ወደ መነሻ ገጽ ይመለሱ"], "zh": ["找不到页面", "您要查找的页面不存在或已被移动。", "返回首页"], "prs": ["صفحه پیدا نشد", "صفحه‌ای که به دنبال آن هستید وجود ندارد یا منتقل شده است.", "بازگشت به صفحهٔ اصلی"], "es": ["Página no encontrada", "La página que busca no existe o ha sido trasladada.", "Volver a la página de inicio"], "pt": ["Página não encontrada", "A página que procura não existe ou foi movida.", "Voltar à página inicial"], "ru": ["Страница не найдена", "Страница, которую вы ищете, не существует или была перемещена.", "Вернуться на главную"], "uk": ["Сторінку не знайдено", "Сторінка, яку ви шукаєте, не існує або була переміщена.", "Повернутися на головну"], "mo": ["Pagina nu a fost găsită", "Pagina pe care o căutați nu există sau a fost mutată.", "Înapoi la pagina principală"]};
+  var l='fr'; try{l=localStorage.getItem('usp-langue')||'fr';}catch(e){}
+  var t=T[l]||T.fr;
+  document.documentElement.lang=l;
+  if(['ar','ps','ku','prs'].indexOf(l)>=0) document.documentElement.dir='rtl';
+  document.getElementById('t').textContent=t[0]; document.getElementById('p').textContent=t[1]; document.getElementById('a').textContent=t[2];
+  document.title=t[0]+' | Unité de Santé Publique Sud 77';
+})();
+</script>
+</body>
+</html>

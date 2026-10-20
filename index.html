@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Unité de Santé Publique Sud 77 | Groupe Hospitalier Sud Île-de-France</title>
 <meta name="description" content="Dépistage, santé sexuelle, vaccination, tuberculose et accès aux soins. Pris en charge par l'Assurance Maladie, aucun frais à votre charge, confidentiel.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Unité de Santé Publique Sud 77">
+<meta property="og:title" content="Unité de Santé Publique Sud 77 | Groupe Hospitalier Sud Île-de-France">
+<meta property="og:description" content="Dépistage, santé sexuelle, vaccination, tuberculose et accès aux soins. Pris en charge par l'Assurance Maladie, aucun frais à votre charge, confidentiel.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -97,6 +100,13 @@
     </div>
   </section>
 
+  <section class="actus" id="actualites" aria-labelledby="actus-titre" hidden>
+    <div class="wrap">
+      <h2 id="actus-titre" data-i18n-ui="actus">Actualités</h2>
+      <div class="actus-liste"></div>
+    </div>
+  </section>
+
   <section class="infos" id="nos-lieux">
     <div class="wrap">
       <div class="apparait">
@@ -124,15 +134,16 @@
 <footer class="pied">
   <div class="wrap">
     <div class="logos">
-      <a class="logo-lien" href="https://www.ghsif.fr/" target="_blank" rel="noopener"><img src="img/ghsif.png" alt="Groupe Hospitalier Sud Île-de-France"></a>
-      <img src="img/ars.png" alt="Agence Régionale de Santé Île-de-France">
-      <img src="img/assurance-maladie.png" alt="L'Assurance Maladie">
+      <a class="logo-lien" href="https://www.ghsif.fr/" target="_blank" rel="noopener"><img loading="lazy" src="img/ghsif.png" alt="Groupe Hospitalier Sud Île-de-France"></a>
+      <img loading="lazy" src="img/ars.png" alt="Agence Régionale de Santé Île-de-France">
+      <img loading="lazy" src="img/assurance-maladie.png" alt="L'Assurance Maladie">
     </div>
     <p class="mention">Unité de Santé Publique Sud 77, <a class="adresse-lien" href="https://www.google.com/maps/search/?api=1&query=Unit%C3%A9%20de%20Sant%C3%A9%20Publique%2C%208%20rue%20de%20Vaux%2C%2077000%20Melun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>8 rue de Vaux, 77000 Melun</span></a></p>
+        <p class="pied-liens"><span><span data-i18n-ui="maj">Dernière mise à jour</span> <bdi dir="ltr"><time datetime="2026-10-20">20/10/2026</time></bdi></span></p>
   </div>
 </footer>
 
-<script src="js/i18n/index.js"></script><script src="js/langues.js"></script><script src="js/usp.js"></script>
+<script src="js/i18n/index.js"></script><script src="js/actualites.js"></script><script src="js/langues.js"></script><script src="js/usp.js"></script>
 <script src="js/recherche.js"></script>
 <script src="js/leaflet.js"></script>
 <script src="js/carte.js"></script>
